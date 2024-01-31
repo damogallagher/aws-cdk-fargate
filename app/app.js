@@ -10,7 +10,7 @@ const products = [
 ];
 
 app.get("/health", (req,res ) => {
-    res.status(200).send({data: "OK"});
+    res.status(200).send({data: "OK World"});
 });
 
 app.get("/", (req,res ) => {
