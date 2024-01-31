@@ -70,7 +70,7 @@ export class AwsCdkFargateStack extends cdk.Stack {
           image: ecs.ContainerImage.fromRegistry("amazon/amazon-ecs-sample"),
           containerName: "nodejs-app-container",
           family: "fargate-node-task-defn",
-          containerPort: 80,
+          containerPort: 3000,
           executionRole,
         },
         cpu: 256,

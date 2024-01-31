@@ -18,3 +18,7 @@ See https://docs.aws.amazon.com/cdk/v2/guide/ecs_example.html and  https://www.c
 cdk bootstrap --profile damiensandbox-ergo
 cdk deploy --profile damiensandbox-ergo
 cdk destroy --profile damiensandbox-ergo
+
+cloudformation to terraform - see https://discuss.hashicorp.com/t/tool-to-convert-cloudformation-to-terraform/46704
+pip install cf2tf
+cf2tf AwsCdkFargateStack.template.json 
