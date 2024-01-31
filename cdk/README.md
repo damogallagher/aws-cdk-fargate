@@ -13,6 +13,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
 
+See https://docs.aws.amazon.com/cdk/v2/guide/ecs_example.html and  https://www.cloudtechsimplified.com/ci-cd-pipeline-aws-fargate-github-actions-nodejs/
 ## Steps locally
 cdk bootstrap --profile damiensandbox-ergo
 cdk deploy --profile damiensandbox-ergo

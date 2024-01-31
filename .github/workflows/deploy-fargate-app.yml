@@ -1,7 +1,8 @@
 name: build & deploy nodejs app to fargate
 
 on: [push]
-
+env:
+    AWS_REGION: eu-west-1 
 jobs:
   deploy-nodejs-app-fargate:
     runs-on: ubuntu-latest
