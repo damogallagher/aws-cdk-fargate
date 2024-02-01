@@ -3,19 +3,25 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { AwsCdkFargateStack } from '../lib/aws-cdk-fargate-stack';
 
+//See https://docs.aws.amazon.com/cdk/v2/guide/stack_how_to_create_multiple_stacks.html
 const app = new cdk.App();
-new AwsCdkFargateStack(app, 'AwsCdkFargateStack', {
-  /* If you don't specify 'env', this stack will be environment-agnostic.
-   * Account/Region-dependent features and context lookups will not work,
-   * but a single synthesized template can be deployed anywhere. */
 
-  /* Uncomment the next line to specialize this stack for the AWS Account
-   * and Region that are implied by the current CLI configuration. */
-  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+// Define the environments
+const devEnv = {
+  account: process.env.CDK_DEFAULT_ACCOUNT,
+  region: 'eu-west-1', // Change this to your desired dev region
+};
 
-  /* Uncomment the next line if you know exactly what Account and Region you
-   * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
+const prodEnv = {
+  account: 'process.env.CDK_DEFAULT_ACCOUNT',
+  region: 'eu-west-1', // Change this to your desired prod region
+};
 
-  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
-});
+// Instantiate the stack for dev environment
+new AwsCdkFargateStack(app, 'DevStack', { env: devEnv, envName: 'dev' });
+
+// Instantiate the stack for prod environment
+new AwsCdkFargateStack(app, 'ProdStack', { env: prodEnv, envName: 'prod' });
+
+// Synthesize and deploy the stacks
+app.synth();
