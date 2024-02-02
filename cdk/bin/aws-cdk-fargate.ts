@@ -13,7 +13,7 @@ const devEnv = {
 };
 
 const prodEnv = {
-  account: 'process.env.CDK_DEFAULT_ACCOUNT',
+  account: process.env.CDK_DEFAULT_ACCOUNT,
   region: 'eu-west-1', // Change this to your desired prod region
 };
 
