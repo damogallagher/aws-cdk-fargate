@@ -1,5 +1,5 @@
 # workflowA.yml
-name: Deploy Fargate Application - ProdStack
+name: Deploy Fargate Infrastructure - ProdStack
 
 on:
     push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Shared Code
-        uses: ./.github/actions/deploy-fargate-app-shared-code.yml
+        uses: ./.github/actions/deploy-fargate-infrastructure-shared-code.yml
         with:
             STACK_TO_DEPLOY: "ProdStack"
 

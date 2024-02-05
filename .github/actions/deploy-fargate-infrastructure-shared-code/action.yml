@@ -1,9 +1,9 @@
 # shared-code.yml
-name: Deploy Fargate Application Shared Code
+name: Deploy Fargate Infrastructure Shared Code
 
 on:
   workflow_run:
-    workflows: ["deploy-fargate-app-dev", "deploy-fargate-app-prod"]
+    workflows: ["deploy-fargate-infrastructure-dev", "deploy-fargate-infrastructure-prod"]
     types:
       - completed
 
@@ -54,12 +54,15 @@ runs:
 
       - name: CDK Synthesize
         shell: bash
+        working-directory: cdk
         run: cdk bootstrap
 
       - name: CDK Synthesize
         shell: bash
+        working-directory: cdk
         run: cdk synth
 
       - name: CDK Deploy
         shell: bash
+        working-directory: cdk
         run: cdk deploy ${{inputs.STACK_TO_DEPLOY}} 
