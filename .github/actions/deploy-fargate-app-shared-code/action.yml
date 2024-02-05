@@ -16,7 +16,7 @@ runs:
       # Your shared steps go here
       - name: Shared Step
         shell: bash
-        run: echo "This is a shared step."
+        run: echo "This is a shared step. - ${{env.STACK_TO_DEPLOY}}"
 
       # Your shared steps go here
       - name: Shared Step
