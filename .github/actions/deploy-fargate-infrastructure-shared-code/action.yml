@@ -52,6 +52,11 @@ runs:
         shell: bash
         run: npm install -g aws-cdk
 
+      - name: Install dependencies
+        shell: bash
+        working-directory: cdk
+        run: npm install
+
       - name: CDK Synthesize
         shell: bash
         working-directory: cdk
