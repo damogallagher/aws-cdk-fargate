@@ -14,9 +14,6 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4    
-            
-    #   - name: Set Variable
-    #     run: echo "STACK_TO_DEPLOY=DevStack" >> $GITHUB_ENV   
 
       - name: Run Shared Code
         uses: ./.github/actions/deploy-fargate-infrastructure-shared-code
