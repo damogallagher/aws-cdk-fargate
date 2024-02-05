@@ -1,0 +1,19 @@
+# shared-code.yml
+name: Deploy Fargate Application Shared Code
+
+on:
+  workflow_run:
+    workflows: ["deploy-fargate-app-dev", "deploy-fargate-app-prod"]
+    types:
+      - completed
+
+jobs:
+  shared-deploy-fargate-application-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Your shared steps go here
+      - name: Shared Step
+        run: echo "This is a shared step."
