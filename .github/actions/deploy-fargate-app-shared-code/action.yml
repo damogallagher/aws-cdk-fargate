@@ -15,4 +15,10 @@ runs:
 
       # Your shared steps go here
       - name: Shared Step
+        shell: bash
         run: echo "This is a shared step."
+
+      # Your shared steps go here
+      - name: Shared Step
+        shell: bash
+        run: env     
