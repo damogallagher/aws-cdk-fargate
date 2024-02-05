@@ -70,4 +70,4 @@ runs:
       - name: CDK Deploy
         shell: bash
         working-directory: cdk
-        run: cdk deploy ${{inputs.STACK_TO_DEPLOY}} 
+        run: cdk deploy ${{inputs.STACK_TO_DEPLOY}} --require-approval never
