@@ -16,4 +16,4 @@ jobs:
       - name: Run Shared Code
         uses: ./.github/actions/deploy-fargate-app-shared-code
         with:
-           STACK_TO_DEPLOY: "DevStack"
+           'STACK_TO_DEPLOY': "DevStack"
