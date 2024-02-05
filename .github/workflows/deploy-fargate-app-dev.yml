@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
-        uses: actions/checkout@v3    
+        uses: actions/checkout@v4    
             
       - name: Run Shared Code
-        uses: ./.github/actions/deploy-fargate-app-shared-code/action.yml
+        uses: ./.github/actions/deploy-fargate-app-shared-code
         with:
            STACK_TO_DEPLOY: "DevStack"
