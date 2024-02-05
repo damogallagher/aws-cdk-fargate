@@ -10,8 +10,7 @@ jobs:
   deploy-devstack:
     runs-on: ubuntu-latest
     steps:
-      - name: Set Variable
-        run: echo "STACK_TO_DEPLOY=DevStack" >> $GITHUB_ENV
-
       - name: Run Shared Code
         uses: ./.github/actions/deploy-fargate-app-shared-code.yml
+        with:
+            STACK_TO_DEPLOY: "DevStack"
