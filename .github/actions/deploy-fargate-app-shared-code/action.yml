@@ -18,7 +18,40 @@ runs:
         shell: bash
         run: echo "This is a shared step. - ${{env.STACK_TO_DEPLOY}}"
 
-      # Your shared steps go here
-      - name: Shared Step
-        shell: bash
-        run: env     
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get install -y python3-pip
+          pip3 install --user awscli
+
+      - name: Configure AWS Credentials
+        run: |
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set region ${{ secrets.AWS_REGION }}
+
+      - name: Install CDK
+        run: npm install -g aws-cdk
+
+      - name: CDK Synthesize
+        run: cdk bootstrap
+
+      - name: CDK Synthesize
+        run: cdk synth
+
+      - name: CDK Deploy
+        run: cdk deploy ${{env.STACK_TO_DEPLOY}} 
