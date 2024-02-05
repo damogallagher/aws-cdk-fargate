@@ -43,24 +43,23 @@ runs:
           node-version: '18'
 
       - name: Install AWS CLI
+        shell: bash
         run: |
           sudo apt-get install -y python3-pip
           pip3 install --user awscli
 
-      - name: Configure AWS Credentials
-        run: |
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws configure set region ${{ secrets.AWS_REGION }}
-
       - name: Install CDK
+        shell: bash
         run: npm install -g aws-cdk
 
       - name: CDK Synthesize
+        shell: bash
         run: cdk bootstrap
 
       - name: CDK Synthesize
+        shell: bash
         run: cdk synth
 
       - name: CDK Deploy
-        run: cdk deploy ${{env.STACK_TO_DEPLOY}} 
+        shell: bash
+        run: cdk deploy ${{inputs.STACK_TO_DEPLOY}} 
