@@ -7,11 +7,11 @@ on:
         - main 
   
 jobs:
-  jobA:
+  deploy-prodstack:
     runs-on: ubuntu-latest
     steps:
       - name: Set Variable
         run: echo "STACK_TO_DEPLOY=ProdStack" >> $GITHUB_ENV
 
       - name: Run Shared Code
-        uses: ./.github/actions/deploy-fargate-app-shared-code
+        uses: ./.github/actions/deploy-fargate-app-shared-code.yml
