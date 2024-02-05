@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Shared Code
-        uses: ./.github/actions/deploy-fargate-app-shared-code.yml
+        uses: ./.github/actions/deploy-fargate-app-shared-code/action.yml
         with:
             STACK_TO_DEPLOY: "DevStack"
