@@ -1,9 +1,9 @@
 # shared-code.yml
-name: Deploy Fargate Infrastructure Shared Code
+name: Deploy Environment Infrastructure Shared Code
 
 on:
   workflow_run:
-    workflows: ["deploy-fargate-infrastructure-dev", "deploy-fargate-infrastructure-prod"]
+    workflows: ["deploy-environment-infrastructure-dev", "deploy-environment-infrastructure-prod"]
     types:
       - completed
 
@@ -21,11 +21,6 @@ runs:
   steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
-      # Your shared steps go here
-      - name: Shared Step
-        shell: bash
-        run: echo "This is a shared step. - ${{env.STACK_TO_DEPLOY}}"
 
       - name: Checkout Repository
         uses: actions/checkout@v4
