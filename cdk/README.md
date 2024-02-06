@@ -15,6 +15,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 See https://docs.aws.amazon.com/cdk/v2/guide/ecs_example.html and  https://www.cloudtechsimplified.com/ci-cd-pipeline-aws-fargate-github-actions-nodejs/
 ## Steps locally
+cdk bootstrap --profile damiensandbox-ergo 
 cdk deploy DevStack --profile damiensandbox-ergo --require-approval never
 cdk deploy ProdStack --profile damiensandbox-ergo --require-approval never
 cdk destroy DevStack --profile damiensandbox-ergo 
