@@ -47,12 +47,7 @@ runs:
         shell: bash
         run: npm install -g aws-cdk
 
-      - name: Install dependencies
+      - name: CDK Destroy
         shell: bash
         working-directory: cdk
-        run: npm install
-
-      - name: CDK Deploy
-        shell: bash
-        working-directory: cdk
-        run: cdk destroy ${{inputs.STACK_TO_DEPLOY}} --require-approval never
+        run: cdk destroy ${{inputs.STACK_TO_DESTROY}} --require-approval never
