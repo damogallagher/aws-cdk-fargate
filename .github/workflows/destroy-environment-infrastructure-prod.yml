@@ -9,7 +9,7 @@ env:
     AWS_REGION: eu-west-1 
     STACK_TO_DESTROY: 'ProdStack'
 jobs:
-  deploy-devstack-infrastructure:
+  destroy-devstack-infrastructure:
     runs-on: ubuntu-latest
     environment: production
     steps:
