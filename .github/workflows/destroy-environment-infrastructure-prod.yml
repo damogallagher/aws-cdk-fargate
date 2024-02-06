@@ -1,0 +1,27 @@
+# workflowA.yml
+name: Destroy Environment Infrastructure - ProdStack
+
+on:
+    push:
+      branches:
+        - main 
+env:
+    AWS_REGION: eu-west-1 
+    STACK_TO_DESTROY: 'ProdStack'
+jobs:
+  deploy-devstack-infrastructure:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4    
+
+      - name: Run Shared Code
+        uses: ./.github/actions/destroy-environment-infrastructure-shared-code
+        with:
+            STACK_TO_DESTROY: ${{ env.STACK_TO_DESTROY }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_REGION: ${{ env.AWS_REGION }}
+
+

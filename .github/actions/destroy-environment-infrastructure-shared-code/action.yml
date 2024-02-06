@@ -1,14 +1,14 @@
 # shared-code.yml
-name: Deploy Environment Infrastructure Shared Code
+name: Destroy Environment Infrastructure Shared Code
 
 on:
   workflow_run:
-    workflows: ["deploy-environment-infrastructure-dev", "deploy-environment-infrastructure-prod"]
+    workflows: ["destroy-environment-infrastructure-dev", "destroy-environment-infrastructure-prod"]
     types:
       - completed
 
 inputs:
-  STACK_TO_DEPLOY:  
+  STACK_TO_DESTROY:  
     required: true
   AWS_ACCESS_KEY_ID:  
     required: true
@@ -52,17 +52,7 @@ runs:
         working-directory: cdk
         run: npm install
 
-      - name: CDK Synthesize
-        shell: bash
-        working-directory: cdk
-        run: cdk bootstrap
-
-      - name: CDK Synthesize
-        shell: bash
-        working-directory: cdk
-        run: cdk synth
-
       - name: CDK Deploy
         shell: bash
         working-directory: cdk
-        run: cdk deploy ${{inputs.STACK_TO_DEPLOY}} --require-approval never
+        run: cdk destroy ${{inputs.STACK_TO_DEPLOY}} --require-approval never
