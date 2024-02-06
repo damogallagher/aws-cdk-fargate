@@ -1,0 +1,26 @@
+# workflowA.yml
+name: Deploy Environment Infrastructure - DevStack
+
+on:
+    push:
+      branches:
+        - dev 
+env:
+    AWS_REGION: eu-west-1 
+    STACK_TO_DEPLOY: 'DevStack'
+jobs:
+  deploy-devstack-infrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4    
+
+      - name: Run Shared Code
+        uses: ./.github/actions/deploy-environment-infrastructure-shared-code
+        with:
+            STACK_TO_DEPLOY: ${{ env.STACK_TO_DEPLOY }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_REGION: ${{ env.AWS_REGION }}
+
+
