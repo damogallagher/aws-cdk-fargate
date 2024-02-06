@@ -55,4 +55,4 @@ runs:
       - name: CDK Destroy
         shell: bash
         working-directory: cdk
-        run: cdk destroy ${{inputs.STACK_TO_DESTROY}} --require-approval never
+        run: cdk destroy ${{inputs.STACK_TO_DESTROY}} --force
