@@ -18,8 +18,8 @@ See https://docs.aws.amazon.com/cdk/v2/guide/ecs_example.html and  https://www.c
 cdk bootstrap --profile damiensandbox-ergo 
 cdk deploy DevStack --profile damiensandbox-ergo --require-approval never
 cdk deploy ProdStack --profile damiensandbox-ergo --require-approval never
-cdk destroy DevStack --profile damiensandbox-ergo 
-cdk destroy ProdStack --profile damiensandbox-ergo 
+cdk destroy DevStack --profile damiensandbox-ergo --force
+cdk destroy ProdStack --profile damiensandbox-ergo --force
 
 cloudformation to terraform - see https://discuss.hashicorp.com/t/tool-to-convert-cloudformation-to-terraform/46704
 pip install cf2tf

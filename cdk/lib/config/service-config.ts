@@ -13,7 +13,6 @@ export interface ServiceConfig {
     healthCheckTimeout: number;
 }
 
-
 export const emailServiceConfig: ServiceConfig = {
     serviceName: 'EmailService',
     servicePath: 'EmailService',
